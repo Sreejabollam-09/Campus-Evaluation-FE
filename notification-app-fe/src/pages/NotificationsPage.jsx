@@ -84,3 +84,22 @@ export function NotificationsPage() {
     </Box>
   );
 }
+import { useEffect, useState } from "react";
+
+function NotificationsPage() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const response = await fetch("http://127.0.0");
+        const json = await response.json();
+        setData(json); // Updates state once data returns
+      } catch (err) {
+        console.error("Connection failed:", err);
+      }
+    }
+    loadData();
+  }, []);
+}
+
